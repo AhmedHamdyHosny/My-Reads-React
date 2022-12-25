@@ -1,17 +1,9 @@
-import { BookImageLink } from './bookImageLink';
+import { BookImageLink } from './BookImageLink';
 
-export class Book {
-  private id: string;
-  private shelf: string;
-  private title: string;
-  private authors: string[];
-  private imageLinks: BookImageLink;
-
-  constructor(id, shelf, title, authors, imageLinks) {
-    this.id = id;
-    this.shelf = shelf;
-    this.title = title;
-    this.authors = authors;
-    this.imageLinks = imageLinks;
-  }
+export interface Book {
+  id: string;
+  shelf: string;
+  title: string;
+  authors: string[];
+  imageLinks: BookImageLink;
 }

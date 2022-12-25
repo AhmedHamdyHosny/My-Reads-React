@@ -41,7 +41,7 @@
 }
 
 .book-card img {
-  height: 200px;
+  height: 12.5rem;
   object-fit: contain;
 }
 
@@ -58,8 +58,13 @@
 }
 
 .check-container {
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
+}
+
+.check-icon {
+  height: 1rem !important;
+  width: 1rem !important;
 }
 
 .action-item span {
@@ -82,9 +87,8 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.search .fa-arrow-left {
+.search .arrow-back {
   position: absolute;
-  top: 23px;
   left: 16px;
   color: #c7c7c7;
   font-size: 20px;
@@ -95,6 +99,16 @@
   bottom: 20px;
   right: 20px;
   border-radius: 50% !important;
+}
+
+.add-icon {
+  height: 2.5rem;
+  pointer-events: none;
+}
+
+.back-icon {
+  height: 2rem;
+  width: 2rem;
 }
 
 @keyframes App-logo-spin {

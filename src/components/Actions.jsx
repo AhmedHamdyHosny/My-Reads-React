@@ -3,7 +3,6 @@ import { SHELF_CURRENTLY_READING, SHELF_WANT_TO_READ, SHELF_READ } from '../util
 import ActionCheck from './ActionCheck';
 
 export default function Actions({ book, updateBook, showAddTo }) {
-  showAddTo = true;
   return (
     <ul className='dropdown-menu' aria-labelledby='dropdownMenuButton1'>
       {showAddTo ? (

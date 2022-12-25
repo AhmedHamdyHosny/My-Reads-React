@@ -21,7 +21,6 @@ function BookItem({ book, updateBook }) {
       </div>
     </div>
   );
-  // return <div key={book.id}>{book.title}</div>;
 }
 
 export default BookItem;
