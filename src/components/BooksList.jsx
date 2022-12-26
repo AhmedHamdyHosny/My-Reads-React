@@ -9,8 +9,6 @@ function BooksList({ books, updateBook }) {
       ))}
     </div>
   );
-  // return <div> {books.map((item) => item.title)} </div>;
-  // return books.map((item) => <BookItem book={item}></BookItem>);
 }
 
 export default BooksList;

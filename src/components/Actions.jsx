@@ -1,50 +1,58 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { SHELF_CURRENTLY_READING, SHELF_WANT_TO_READ, SHELF_READ } from '../utilities/constant.ts';
 import ActionCheck from './ActionCheck';
+import { BooksContext } from '../context/BooksContext.js';
 
-export default function Actions({ book, updateBook, showAddTo }) {
+export default function Actions({ book, updateBook }) {
+  const books = useContext(BooksContext);
+  const filterBooks = books?.filter((item) => item.id === book.id);
+  const showAddTo = filterBooks == null || filterBooks.length === 0;
+  if (!showAddTo) {
+    book.shelf = filterBooks[0].shelf;
+  }
+
   return (
     <ul className='dropdown-menu' aria-labelledby='dropdownMenuButton1'>
       {showAddTo ? (
         <li>
-          <a className='dropdown-item action-item disabled' href='/#'>
+          <div className='dropdown-item action-item disabled'>
             <ActionCheck show={true}></ActionCheck>
             <span>Add to</span>
-          </a>
+          </div>
         </li>
       ) : (
         <li>
-          <a className='dropdown-item action-item disabled' href='/#'>
+          <div className='dropdown-item action-item disabled'>
             <ActionCheck show={false}></ActionCheck>
             <span>Move to</span>
-          </a>
+          </div>
         </li>
       )}
 
       <li onClick={() => updateBook(book, SHELF_CURRENTLY_READING)}>
-        <a className='dropdown-item action-item' href='/#'>
+        <div className='dropdown-item action-item'>
           <ActionCheck show={!showAddTo && book.shelf === SHELF_CURRENTLY_READING}></ActionCheck>
           <span>Currently Reading</span>
-        </a>
+        </div>
       </li>
       <li onClick={() => updateBook(book, SHELF_WANT_TO_READ)}>
-        <a className='dropdown-item action-item' href='/#'>
+        <div className='dropdown-item action-item'>
           <ActionCheck show={!showAddTo && book.shelf === SHELF_WANT_TO_READ}></ActionCheck>
           <span>Want to Read</span>
-        </a>
+        </div>
       </li>
       <li onClick={() => updateBook(book, SHELF_READ)}>
-        <a className='dropdown-item action-item' href='/#'>
+        <div className='dropdown-item action-item'>
           <ActionCheck show={!showAddTo && book.shelf === SHELF_READ}></ActionCheck>
           <span>Read</span>
-        </a>
+        </div>
       </li>
       {!showAddTo ? (
         <li onClick={() => updateBook(book, null)}>
-          <a className='dropdown-item action-item' href='/#'>
+          <div className='dropdown-item action-item'>
             <ActionCheck></ActionCheck>
             <span>None</span>
-          </a>
+          </div>
         </li>
       ) : null}
     </ul>

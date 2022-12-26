@@ -13,11 +13,13 @@ function BookItem({ book, updateBook }) {
       </div>
       <div className='mt-2'>
         <h5>{book.title}</h5>
-        {book.authors.map((author) => (
-          <p className='card-text text-muted fw-bold' key={author}>
-            {author}
-          </p>
-        ))}
+        {book.authors
+          ? book.authors.map((author) => (
+              <p className='card-text text-muted fw-bold' key={author}>
+                {author}
+              </p>
+            ))
+          : null}
       </div>
     </div>
   );
