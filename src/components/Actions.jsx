@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { SHELF_CURRENTLY_READING, SHELF_WANT_TO_READ, SHELF_READ } from '../utilities/constant.ts';
+import { SHELF_CURRENTLY_READING, SHELF_WANT_TO_READ, SHELF_READ, SHELF_NONE } from '../utilities/constant.ts';
 import ActionCheck from './ActionCheck';
 import { BooksContext } from '../context/BooksContext.js';
 
@@ -48,7 +48,7 @@ export default function Actions({ book, updateBook }) {
         </div>
       </li>
       {!showAddTo ? (
-        <li onClick={() => updateBook(book, null)}>
+        <li onClick={() => updateBook(book, SHELF_NONE)}>
           <div className='dropdown-item action-item'>
             <ActionCheck></ActionCheck>
             <span>None</span>

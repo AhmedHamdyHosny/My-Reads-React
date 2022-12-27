@@ -5,7 +5,7 @@ import BookItem from './BookItem';
 import BackIcon from '../assets/icons/arrow-back.svg';
 import { useNavigate } from 'react-router-dom';
 
-const Search = () => {
+const Search = ({ updateBook }) => {
   const [search, setSearch] = useState('');
   const [searchResultBooks, setSearchResultBooks] = useState([]);
   const navigate = useNavigate();
@@ -30,15 +30,6 @@ const Search = () => {
 
   const navigateHome = () => {
     navigate('/');
-  };
-
-  const updateBook = (book, shelf) => {
-    console.log('book', book);
-    console.log('shelf', shelf);
-    // const listBooks = books.map((item) => (item.id === book.id ? { ...item, shelf: shelf } : item));
-    // setBooks(listBooks);
-    // const updatedBook = listBooks.filter((item) => item.id === book.id);
-    // console.log(updatedBook);
   };
 
   return (
