@@ -25,15 +25,12 @@ function App() {
   const bindBooks = () => {
     getAllAsync().then((data) => {
       setBooks(data);
-      console.log('bind books', data);
     });
   };
   const moveBook = (book, shelf) => {
     if (book.shelf !== shelf) {
-      console.log('update shelf');
       updateAsync(book, shelf).then((data) => {
         setBooks(books.map((item) => (item.id === book.id ? { ...item, shelf: shelf } : item)));
-        console.log(books);
         bindBooks();
         // if (shelf === SHELF_NONE) {
         //   bindBooks();
@@ -42,10 +39,6 @@ function App() {
         // }
       });
     }
-    // const listBooks = books.map((item) => (item.id === book.id ? { ...item, shelf: shelf } : item));
-    // setBooks(listBooks);
-    // const updatedBook = listBooks.filter((item) => item.id === book.id);
-    // console.log(updatedBook);
   };
   const addBook = (book, shelf) => {
     updateAsync(book, shelf).then((data) => {
