@@ -11,15 +11,20 @@ const Search = ({ updateBook }) => {
   const navigate = useNavigate();
   useEffect(() => {
     setSearchResultBooks([]);
+    // console.log('search:', search);
+    // console.log(searchResultBooks);
+
     if (search && search !== '') {
       try {
-        searchAsync(search, 10).then((data) => {
-          if (!data.error) {
-            setSearchResultBooks([...data]);
-          } else {
-            setSearchResultBooks([]);
-          }
-        });
+        setTimeout(() => {
+          searchAsync(search, 10).then((data) => {
+            if (!data.error) {
+              setSearchResultBooks([...data]);
+            } else {
+              setSearchResultBooks([]);
+            }
+          });
+        }, 500);
       } catch (err) {
         // setFetchError(err.message);
       } finally {
@@ -40,7 +45,7 @@ const Search = ({ updateBook }) => {
         </i>
         <input type='text' value={search} onChange={(e) => setSearch(e.target.value)} className='form-control' placeholder='Search by title, author, or ISBN' />
       </div>
-      <div className='search-result d-flex justify-content-center flex-wrap my-5 pb-5'>{searchResultBooks ? searchResultBooks.map((item) => <BookItem book={item} key={item.id} updateBook={updateBook} />) : null}</div>
+      <div className='search-result d-flex justify-content-center flex-wrap my-5 pb-5'>{searchResultBooks && searchResultBooks.length > 0 ? searchResultBooks.map((item) => <BookItem book={item} key={item.id} updateBook={updateBook} />) : <h5> No Book Found</h5>}</div>
     </div>
   );
 };

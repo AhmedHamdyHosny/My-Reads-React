@@ -9,35 +9,35 @@ const headers = {
   Authorization: token,
 };
 
-export const get = (bookId) =>
-  fetch(`${api}/books/${bookId}`, { headers })
-    .then((res) => res.json())
-    .then((data) => data.book);
+// export const get = (bookId) =>
+//   fetch(`${api}/books/${bookId}`, { headers })
+//     .then((res) => res.json())
+//     .then((data) => data.book);
 
-export const getAsync = async (bookId) =>
-  await fetch(`${api}/books/${bookId}`, { headers })
-    .then((res) => res.json())
-    .then((data) => data.book);
+// export const getAsync = async (bookId) =>
+//   await fetch(`${api}/books/${bookId}`, { headers })
+//     .then((res) => res.json())
+//     .then((data) => data.book);
 
-export const getAll = () =>
-  fetch(`${api}/books`, { headers })
-    .then((res) => res.json())
-    .then((data) => data.books);
+// export const getAll = () =>
+//   fetch(`${api}/books`, { headers })
+//     .then((res) => res.json())
+//     .then((data) => data.books);
 
 export const getAllAsync = async () =>
   await fetch(`${api}/books`, { headers })
     .then((res) => res.json())
     .then((data) => data.books);
 
-export const update = (book, shelf) =>
-  fetch(`${api}/books/${book.id}`, {
-    method: 'PUT',
-    headers: {
-      ...headers,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ shelf }),
-  }).then((res) => res.json());
+// export const update = (book, shelf) =>
+//   fetch(`${api}/books/${book.id}`, {
+//     method: 'PUT',
+//     headers: {
+//       ...headers,
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({ shelf }),
+//   }).then((res) => res.json());
 
 export const updateAsync = async (book, shelf) =>
   await fetch(`${api}/books/${book.id}`, {
@@ -49,17 +49,17 @@ export const updateAsync = async (book, shelf) =>
     body: JSON.stringify({ shelf }),
   }).then((res) => res.json());
 
-export const search = (query, maxResults) =>
-  fetch(`${api}/search`, {
-    method: 'POST',
-    headers: {
-      ...headers,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ query, maxResults }),
-  })
-    .then((res) => res.json())
-    .then((data) => data.books);
+// export const search = (query, maxResults) =>
+//   fetch(`${api}/search`, {
+//     method: 'POST',
+//     headers: {
+//       ...headers,
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({ query, maxResults }),
+//   })
+//     .then((res) => res.json())
+//     .then((data) => data.books);
 
 export const searchAsync = async (query, maxResults) =>
   await fetch(`${api}/search`, {

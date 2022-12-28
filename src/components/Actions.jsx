@@ -50,7 +50,7 @@ export default function Actions({ book, updateBook }) {
       {!showAddTo ? (
         <li onClick={() => updateBook(book, SHELF_NONE)}>
           <div className='dropdown-item action-item'>
-            <ActionCheck></ActionCheck>
+            <ActionCheck show={!showAddTo && book.shelf === SHELF_NONE}></ActionCheck>
             <span>None</span>
           </div>
         </li>

@@ -5,7 +5,7 @@ function BookItem({ book, updateBook }) {
   return (
     <div className='book-card'>
       <div className='position-relative'>
-        <img src={book.imageLinks.thumbnail} alt='...' />
+        <img src={book.imageLinks?.thumbnail} alt='...' />
         <div className='book-card-action-btn dropdown'>
           <button className='btn btn-success dropdown-toggle' type='button' id='dropdownMenuButton1' data-bs-toggle='dropdown' aria-expanded='false'></button>
           <Actions book={book} updateBook={updateBook}></Actions>

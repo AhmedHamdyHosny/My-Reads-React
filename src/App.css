@@ -28,6 +28,14 @@
   color: #61dafb;
 }
 
+.not-found {
+  width: 100%;
+  flex-grow: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  background-color: #fff;
+}
+
 .section {
   margin-top: 20px;
   margin-bottom: 100px;
