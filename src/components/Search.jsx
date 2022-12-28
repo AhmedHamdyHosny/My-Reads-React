@@ -4,34 +4,31 @@ import { searchAsync } from '../BooksAPI';
 import BookItem from './BookItem';
 import BackIcon from '../assets/icons/arrow-back.svg';
 import { useNavigate } from 'react-router-dom';
+import useDebounce from '../utilities/useDebounce';
 
 const Search = ({ updateBook }) => {
   const [search, setSearch] = useState('');
   const [searchResultBooks, setSearchResultBooks] = useState([]);
+  const debouncedValue = useDebounce(search, 500);
   const navigate = useNavigate();
   useEffect(() => {
     setSearchResultBooks([]);
-    // console.log('search:', search);
-    // console.log(searchResultBooks);
-
-    if (search && search !== '') {
+    if (debouncedValue && debouncedValue !== '') {
       try {
-        setTimeout(() => {
-          searchAsync(search, 10).then((data) => {
-            if (!data.error) {
-              setSearchResultBooks([...data]);
-            } else {
-              setSearchResultBooks([]);
-            }
-          });
-        }, 500);
+        searchAsync(debouncedValue, 10).then((data) => {
+          if (!data.error) {
+            setSearchResultBooks([...data]);
+          } else {
+            setSearchResultBooks([]);
+          }
+        });
       } catch (err) {
         // setFetchError(err.message);
       } finally {
         // setIsLoading(false);
       }
     }
-  }, [search]);
+  }, [debouncedValue]);
 
   const navigateHome = () => {
     navigate('/');
